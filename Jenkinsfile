@@ -62,7 +62,7 @@ pipeline {
                            timeout(time:30, unit:"MINUTES"){  //步骤超时时间
                                 script{  //嵌入脚本,填写运行代码
                                    print("代码扫描")
-								   tools.printMes("this is my lib!")
+				   tools.PrintMes("this is my lib!")
                                 }
                            }
                        }
