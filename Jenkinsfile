@@ -3,6 +3,7 @@
 def tools=new org.devops.tools()
 String workspace="/var/lib/jenkins"
 //Pipeline
+hello()
 pipeline {
       //agent指定在哪个node节点上去运行这条流水线
       agent {
