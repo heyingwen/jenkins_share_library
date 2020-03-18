@@ -1,6 +1,8 @@
 #!groovy
 //这是jenkins里配置的共享库的名称jenkins_share_library
 @Library('jenkins_share_library')_  //加载共享库
+//定义一个变量去引用共享库里的内容,这里指的是github里的定义的包org.devops
+def tools=new org.devops.tools()
 String workspace="/var/lib/jenkins" //定义了jenkins的工作目录
 //Pipeline
 pipeline {
@@ -72,6 +74,8 @@ pipeline {
                     timeout(time:30, unit:"MINUTES"){  //步骤超时时间
                           script{  //嵌入脚本,填写运行代码
                              print("代码扫描")
+							 //这里引用开头定义的变量tools
+							 tools.PrintMes("this is my lib!")
                            }
                      }
                 }
