@@ -64,10 +64,12 @@ pipeline {
                steps{ //步骤
                   timeout(time:20, unit:"MINUTES"){ //步骤超时时间
                       script{ //嵌入脚本,填写运行代码
-					      //获取通过自动安装或者手动放置工具的环境变量。支持maven/jdk/gradle,工具的名称必须在系统设置-全局工具配置中定义
-                          println('应用打包')
+                          println("应用打包")
+			      
 			  //这里引用开头定义的变量tools
 			  tools.PrintMes("应用打包",'green')
+			      
+			  //获取通过自动安装或者手动放置工具的环境变量。支持maven/jdk/gradle,工具的名称必须在系统设置-全局工具配置中定义
                           mvnHome=tool "maven"
                           println(mvnHome)
                           sh "${mvnHome}/bin/mvn --version"
