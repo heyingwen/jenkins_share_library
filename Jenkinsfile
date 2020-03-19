@@ -4,6 +4,9 @@
 //定义一个变量去引用共享库里的内容,这里指的是github里的定义的包org.devops
 def tools=new org.devops.tools()
 String workspace="/var/lib/jenkins" //定义了jenkins的工作目录
+//调用github仓库里vars目录下的hello.groovy的方法
+hello()
+
 //Pipeline
 pipeline {
       //agent指定在哪个node节点上去运行这条流水线
