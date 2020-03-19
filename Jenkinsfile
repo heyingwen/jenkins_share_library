@@ -44,6 +44,8 @@ pipeline {
                     timeout(time:5, unit:"MINUTES"){ //步骤超时时间
                          script{ //嵌入脚本,填写运行代码
                                 println('获取代码')
+				//这里引用开头定义的变量tools
+			        tools.PrintMes("获取代码",'green')
                                 println("${test}")
 				//input是用户在执行各个阶段的时候，由人工确认是否继续执行
                 input id: 'Test', message: '我们是否要继续', ok: '是，继续吧！', parameters: [choice(choices: ['a', 'b'], description: '', name: 'test1')], submitter: 'heyingwen,admin'
@@ -64,6 +66,8 @@ pipeline {
                       script{ //嵌入脚本,填写运行代码
 					      //获取通过自动安装或者手动放置工具的环境变量。支持maven/jdk/gradle,工具的名称必须在系统设置-全局工具配置中定义
                           println('应用打包')
+			  //这里引用开头定义的变量tools
+			  tools.PrintMes("应用打包",'green')
                           mvnHome=tool "maven"
                           println(mvnHome)
                           sh "${mvnHome}/bin/mvn --version"
@@ -77,8 +81,8 @@ pipeline {
                     timeout(time:30, unit:"MINUTES"){  //步骤超时时间
                           script{  //嵌入脚本,填写运行代码
                              print("代码扫描")
-							 //这里引用开头定义的变量tools
-							 tools.PrintMes("this is my lib!")
+			     //这里引用开头定义的变量tools
+			     tools.PrintMes("代码扫描",'green')
                            }
                      }
                 }
