@@ -8,6 +8,7 @@ pipeline{
       stage("build"){
          steps{
             script {
+		            #maven是jenkins里maven工具的名称
 			    mvnHome= tool "maven"
 				sh "${mvnHome}/bin/mvn ${buildShell}"
 			}
