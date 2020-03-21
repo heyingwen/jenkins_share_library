@@ -41,5 +41,16 @@ pipeline{
 		  }
              }
         }
+		
+	//npm工具
+	stage("npm build"){
+         steps{
+            script {
+		 //npm是jenkins里nodejs工具的名称
+		npmHome= tool "npm"
+		sh "${npmHome}/bin/npm ${buildShell}"
+		  }
+             }
+        }
     }
 }
