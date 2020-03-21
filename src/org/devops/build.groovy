@@ -10,6 +10,6 @@ def Build(buildType,buildShell){
 		 export PATH=\$NODE_HOME/bin:\$PATH  
 		 ${buildHome}/bin/${buildType} ${buildShell}"""        	 
     }else{
-      sh "${buildHome/bin/${buildType}}  ${buildShell}"
+      sh "${buildHome/bin/${buildType}  ${buildShell}}"
     }
 }
