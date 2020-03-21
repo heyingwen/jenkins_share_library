@@ -1,5 +1,5 @@
 #!groovy
-@Library('jenkins_share_library')_ 
+@Library('jenkinslibrary@master')_
 def build=new org.devops.build()
 String buildType="${env.buildType}"
 String buildShell="${env.buildShell}"
@@ -9,8 +9,10 @@ pipeline{
    stages{
       stage("build"){
          steps{
-		    build.Build(buildType,buildShell)
-		 }	  
-	  }
+	        script{
+                build.Build(buildType,buildShell)
+	          }
+	      }	  
+        }
    }
 }
