@@ -48,7 +48,7 @@ pipeline{
             script {
 		 //npm是jenkins里nodejs工具的名称
 		npmHome= tool "npm"
-		sh "${npmHome}/bin/npm ${buildShell}"
+		sh "export NODE_HOME=${npmHome} && export PATH=\$NODE_HOME/bin:\$PATH  && ${npmHome}/bin/npm ${buildShell}"
 		  }
              }
         }
