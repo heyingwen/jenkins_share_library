@@ -9,22 +9,37 @@ pipeline{
       stage("maven build"){
          steps{
             script {
-		            //maven是jenkins里maven工具的名称
-			    mvnHome= tool "maven"
-				sh "${mvnHome}/bin/mvn ${buildShell}"
-			}
-         }
+		     //maven是jenkins里maven工具的名称
+		     mvnHome= tool "maven"
+	             sh "${mvnHome}/bin/mvn ${buildShell}"
+		   }
+              }
       }
 	   
-	    //ant工具
-	    stage("ant build"){
+      //ant工具
+      stage("ant build"){
          steps{
             script {
-		            //ant是jenkins里ant工具的名称
-			    antHome= tool "ant"
-				sh "${antHome}/bin/ant ${buildShell}"
-			}
-         }
+		   try {
+		     //ant是jenkins里ant工具的名称
+		       antHome= tool "ant"
+			sh "${antHome}/bin/ant ${buildShell}"
+		       }catch(e){
+		        println(e)
+			      }
+	           }
+            }
       }
-   }
+	  
+	//gradle工具
+	stage("gradle build"){
+         steps{
+            script {
+		 //gradle是jenkins里gradle工具的名称
+		gradleHome= tool "gradle"
+		sh "${gradleHome}/bin/gradle ${buildShell}"
+		  }
+             }
+        }
+    }
 }
