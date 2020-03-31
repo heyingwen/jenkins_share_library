@@ -1,6 +1,7 @@
 #!groovy
 @Library('jenkins_share_library')_  //加载共享库
 def build=new org.devops.build()
+def deploy=new org.devops.deploy_salt()
 String buildType="${env.buildType}"
 String buildShell="${env.buildShell}"
 String deployHosts="${env.deployHosts}"
